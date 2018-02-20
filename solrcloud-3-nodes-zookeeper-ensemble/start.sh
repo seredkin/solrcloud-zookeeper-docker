@@ -30,8 +30,8 @@ SOLRCLOUD_CLUSTER_SIZE=3
 
 [ -z "$SZD_HOME" ] && echo "ERROR: "\$SZD_HOME" environment variable not found!" && exit 1;
 
-export DOCKER_BIN="sudo docker"
-export DOCKER_COMPOSE_BIN="sudo docker-compose"
+export DOCKER_BIN="docker"
+export DOCKER_COMPOSE_BIN="docker-compose"
 
 # check if zookeeper and solr container images are present 
 
