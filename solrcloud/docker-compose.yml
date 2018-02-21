@@ -25,7 +25,7 @@ services:
             SOLR_PORT: 9081
 #            SOLR_HOME: /store/solr
             ZK_HOST: zoo-1:22181
-#            SOLR_LOGS_DIR: /opt/logs
+            SOLR_LOGS_DIR: /opt/logs
             SOLR_HOST: solr-1
             SOLR_HEAP:
             SOLR_JAVA_MEM:
