@@ -2,7 +2,7 @@ version: '2'
 services:
     zoo-1:
         image: zookeeper
-        restart: always
+        restart: on-failure
         ports:
           - "2181:2181"
         volumes:
