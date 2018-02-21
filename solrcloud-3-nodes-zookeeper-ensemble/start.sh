@@ -75,16 +75,18 @@ conf_container=${conf_prefix}1
 
 cluster_size=$ZK_CLUSTER_SIZE
 
+VOLUME_STORE=/opt
+
 for ((i=1; i <= cluster_size ; i++)); do
 
-  HOST_DATA=$SZD_DATA_DIR"/${conf_prefix}${i}"
-  if [ ! -d ${HOST_DATA} ] ; then
+  HOST_DATA="$VOLUME_STORE/${conf_prefix}${i}"
+  if [ ! -d ${HOST_DATA}/data ] ; then
     mkdir -p ${HOST_DATA}/logs
     mkdir -p ${HOST_DATA}/data
   fi
 
-  if [ ! -d ${HOST_DATA} ] ; then
-    echo "Error: unable to create "$HOST_DATA
+  if [ ! -d ${HOST_DATA}/data ] ; then
+    echo "Error: unable to create $VOLUME_STORE/data"
     exit
   fi
 
@@ -99,9 +101,9 @@ HOST_PREFIX=${s_container_name}-
 for ((i=1; i <= SOLRCLOUD_CLUSTER_SIZE ; i++)); do
 
   SOLR_HOSTNAME=${HOST_PREFIX}${i}
-  HOST_DATA_DIR=$SZD_DATA_DIR/${SOLR_HOSTNAME}
+  HOST_DATA_DIR=$VOLUME_STORE/${SOLR_HOSTNAME}
 
-  if [ ! -d ${HOST_DATA_DIR} ] ; then
+  if [ ! -d ${HOST_DATA_DIR}/data ] ; then
     mkdir -p ${HOST_DATA_DIR}/logs
     mkdir -p ${HOST_DATA_DIR}/store/solr
     mkdir -p ${HOST_DATA_DIR}/store/shared-lib
@@ -110,7 +112,7 @@ for ((i=1; i <= SOLRCLOUD_CLUSTER_SIZE ; i++)); do
   fi
 
   if [ ! -d ${HOST_DATA_DIR} ] ; then
-    echo "Error: unable to create "$HOST_DATA_DIR
+    echo "Error: unable to create $HOST_DATA_DIR"
     exit
   fi
 

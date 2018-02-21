@@ -64,6 +64,7 @@ fi
 # create data dir for each cluster node 
 
 SZD_DATA_DIR=$SZD_HOME/$APP/data
+VOLUME_STORE=/opt/solrcloud
 
 # Need a volume to read the config from
 conf_prefix=zoo-
@@ -72,8 +73,8 @@ cluster_size=$ZK_CLUSTER_SIZE
 
 for ((i=1; i <= cluster_size ; i++)); do
 
-  HOST_DATA=$SZD_DATA_DIR"/${conf_prefix}${i}"
-  if [ ! -d ${HOST_DATA} ] ; then
+  HOST_DATA=${VOLUME_STORE}/${conf_prefix}${i}
+  if [ ! -d ${HOST_DATA}/data ] ; then
     mkdir -p ${HOST_DATA}/logs
     mkdir -p ${HOST_DATA}/data
   fi
@@ -94,7 +95,7 @@ HOST_PREFIX=${s_container_name}-
 for ((i=1; i <= SOLRCLOUD_CLUSTER_SIZE ; i++)); do
 
   SOLR_HOSTNAME=${HOST_PREFIX}${i}
-  HOST_DATA_DIR=$SZD_DATA_DIR/${SOLR_HOSTNAME}
+  HOST_DATA_DIR=${VOLUME_STORE}/${SOLR_HOSTNAME}
 
   if [ ! -d ${HOST_DATA_DIR} ] ; then
     mkdir -p ${HOST_DATA_DIR}/logs
