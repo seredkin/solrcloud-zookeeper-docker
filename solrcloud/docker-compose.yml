@@ -18,9 +18,9 @@ services:
         ports:
             - 9081:9081
         volumes:
-            - ./data/solrcloud/solr-1/logs:/opt/logs
-            - ./data/solrcloud/solr-1/store:/store
-            - ./data/solrcloud/solr-1/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+            - /opt/solrcloud/solr-1/logs:/opt/logs
+            - /opt/solrcloud/solr-1/store:/store
+            - /opt/solrcloud/solr-1/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
         environment:
             SOLR_PORT: 9081
 #            SOLR_HOME: /store/solr
