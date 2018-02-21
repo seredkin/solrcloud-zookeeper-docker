@@ -6,7 +6,7 @@ services:
         ports:
           - "2181:2181"
         volumes:
-            - ./data/zoo-1:/opt/persist
+            - /opt/zoo-1:/opt/persist
         environment:
             ZOO_MY_ID: 1
             ZOO_PORT: 2181
@@ -19,7 +19,7 @@ services:
         ports:
           - "2182:2182"
         volumes:
-            - ./data/zoo-2:/opt/persist
+            - /opt/zoo-2:/opt/persist
         environment:
             ZOO_MY_ID: 2
             ZOO_PORT: 2182
@@ -32,7 +32,7 @@ services:
         ports:
           - "2183:2183"
         volumes:
-            - ./data/zoo-3:/opt/persist
+            - /opt/zoo-3:/opt/persist
         environment:
             ZOO_MY_ID: 3
             ZOO_PORT: 2183
@@ -45,9 +45,9 @@ services:
         ports:
             - 8081:8081
         volumes:
-            - ./data/solr-1/logs:/opt/logs
-            - ./data/solr-1/store:/store
-            - ./data/solr-1/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+            - /opt/solr-1/logs:/opt/logs
+            - /opt/solr-1/store:/store
+            - /opt/solr-1/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
         environment:
             SOLR_PORT: 8081
             SOLR_HOME: /store/solr
@@ -66,9 +66,9 @@ services:
         ports:
             - 8082:8082
         volumes:
-            - ./data/solr-2/logs:/opt/logs
-            - ./data/solr-2/store:/store
-            - ./data/solr-2/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+            - /opt/solr-2/logs:/opt/logs
+            - /opt/solr-2/store:/store
+            - /opt/solr-2/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
         environment:
             SOLR_PORT: 8082
             SOLR_HOME: /store/solr
@@ -87,9 +87,9 @@ services:
         ports:
             - 8083:8083
         volumes:
-            - ./data/solr-3/logs:/opt/logs
-            - ./data/solr-3/store:/store
-            - ./data/solr-3/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+            - /opt/solr-3/logs:/opt/logs
+            - /opt/solr-3/store:/store
+            - /opt/solr-3/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
         environment:
             SOLR_PORT: 8083
             SOLR_HOME: /store/solr
