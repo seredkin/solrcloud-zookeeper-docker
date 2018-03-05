@@ -75,7 +75,7 @@ conf_container=${conf_prefix}1
 
 cluster_size=$ZK_CLUSTER_SIZE
 
-VOLUME_STORE=/opt
+VOLUME_STORE=/opt/solrcloud
 
 for ((i=1; i <= cluster_size ; i++)); do
 
